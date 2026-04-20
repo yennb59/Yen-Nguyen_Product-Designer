@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yen Nguyen — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  ╔══════════════════════════════════════════════════╗
+  ║  GITHUB FOLDER STRUCTURE                         ║
+  ║  index.html  ← this file                        ║
+  ║  images/                                         ║
+  ║    Future_Investor.jpg                           ║
+  ║    Kafi_Bond.jpg                                 ║
+  ║    Kafi_New_Website.jpg                          ║
+  ║    Kafi_Website_Concept.jpg                      ║
+  ║    Kafi_Website_Redesign.jpg                     ║
+  ║    Kafi_X.jpg                                    ║
+  ║    Kafi_X_Investment_App.jpg                     ║
+  ║    Kafi_X_screens_overview.jpg                   ║
+  ║    MyVIB_2_0.jpg                                 ║
+  ╚══════════════════════════════════════════════════╝
+-->
+
+<style>
+/* ─── Reset ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+
+/* ─── Tokens ─── */
+:root{
+  --max:1100px;
+  --px:clamp(1.25rem,4vw,3rem);
+  --white:#ffffff;
+  --bg:#f8f8f6;
+  --black:#111111;
+  --gray-50:#f9f9f7;
+  --gray-100:#f2f1ef;
+  --gray-200:#e5e3df;
+  --gray-300:#cac8c2;
+  --gray-400:#9c9890;
+  --gray-500:#6b6760;
+  --gray-700:#3a3730;
+  --blue:#2563eb;
+  --blue-lt:#eff6ff;
+  --blue-bd:#bfdbfe;
+  --r:10px;
+  --r-lg:16px;
+  --r-xl:20px;
+  --sh-xs:0 1px 3px rgba(0,0,0,.06);
+  --sh-sm:0 2px 8px rgba(0,0,0,.07),0 1px 3px rgba(0,0,0,.04);
+  --sh-md:0 6px 24px rgba(0,0,0,.09),0 2px 6px rgba(0,0,0,.04);
+  --sh-lg:0 24px 64px rgba(0,0,0,.11),0 6px 20px rgba(0,0,0,.06);
+  --t:.26s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── Layout ─── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--px)}
+.sec{padding:clamp(80px,11vh,120px) 0}
+.sec-alt{background:var(--gray-50)}
+.sec-dark{background:var(--black)}
+
+/* ─── Section header ─── */
+.sec-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.875rem}
+.sec-chip svg{width:11px;height:11px}
+.sec-h2{font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:1rem;color:var(--black)}
+.sec-h2 em{font-style:normal;color:var(--blue)}
+.sec-sub{font-size:1.0625rem;color:var(--gray-500);line-height:1.75;max-width:500px;font-weight:400}
+.sh-block{margin-bottom:clamp(2.5rem,5vw,4rem)}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:62px;
+  background:rgba(255,255,255,0);
+  border-bottom:1px solid transparent;
+  transition:background var(--t),border-color var(--t),box-shadow var(--t);
+}
+nav.on{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-color:var(--gray-200);
+}
+.nav-in{
+  max-width:var(--max);margin:0 auto;padding:0 var(--px);
+  height:100%;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-size:.9375rem;font-weight:700;letter-spacing:-.02em;color:var(--black)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-500);padding:.375rem .875rem;border-radius:8px;transition:color var(--t),background var(--t)}
+.nav-links a:hover{color:var(--black);background:var(--gray-100)}
+.nav-cta{font-size:.875rem;font-weight:600;padding:.5rem 1.25rem;background:var(--black);color:#fff;border-radius:100px;transition:background var(--t),transform var(--t)}
+.nav-cta:hover{background:var(--blue);transform:translateY(-1px)}
+.nav-mob{display:none;width:38px;height:38px;align-items:center;justify-content:center;border-radius:8px;color:var(--gray-700);transition:background var(--t)}
+.nav-mob:hover{background:var(--gray-100)}
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);padding:.75rem 1.5rem 1rem;flex-direction:column;gap:.25rem;z-index:199;box-shadow:var(--sh-md)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:.9375rem;font-weight:500;color:var(--gray-700);padding:.75rem 1rem;border-radius:8px;transition:background var(--t)}
+.mob-menu a:hover{background:var(--gray-50);color:var(--black)}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero{
+  padding:136px 0 88px;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;top:-120px;right:-180px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;
+  background:var(--blue-lt);color:var(--blue);
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:.375rem .875rem;border-radius:100px;border:1px solid var(--blue-bd);
+}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-name{font-size:clamp(2.75rem,5.5vw,4.5rem);font-weight:800;line-height:1.04;letter-spacing:-.035em;margin-bottom:.5rem}
+.hero-name em{font-style:normal;color:var(--blue)}
+.hero-role{font-size:1.0625rem;color:var(--gray-500);margin-bottom:1.375rem;font-weight:400}
+.hero-desc{font-size:1rem;line-height:1.78;color:var(--gray-700);margin-bottom:2rem;max-width:500px;font-weight:400}
+.hero-acts{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-dark{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--black);color:#fff;
+  padding:.8rem 1.625rem;border-radius:100px;
+  font-size:.9375rem;font-weight:600;
+  transition:background var(--t),transform var(--t),box-shadow var(--t);
+}
+.btn-dark:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.25)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;color:var(--gray-700);
+  padding:.8rem 1.625rem;border-radius:100px;
+  font-size:.9375rem;font-weight:500;
+  border:1.5px solid var(--gray-200);
+  transition:border-color var(--t),color var(--t),transform var(--t);
+}
+.btn-outline:hover{border-color:var(--black);color:var(--black);transform:translateY(-2px)}
+.hero-soc{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.hero-soc a{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:500;color:var(--gray-400);transition:color var(--t)}
+.hero-soc a:hover{color:var(--blue)}
+.hero-soc svg{width:14px;height:14px;flex-shrink:0}
+
+/* Hero visual */
+.hero-visual{display:flex;flex-direction:column;gap:.875rem}
+.hero-card{
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--gray-200);box-shadow:var(--sh-md);
+  background:var(--gray-50);transition:transform var(--t),box-shadow var(--t);
+}
+.hero-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
+.hero-card-img{width:100%;height:200px;object-fit:cover;display:block}
+.hero-card-foot{padding:.875rem 1.125rem}
+.hero-card-foot h4{font-size:.875rem;font-weight:600;margin-bottom:.125rem}
+.hero-card-foot p{font-size:.75rem;color:var(--gray-400)}
+.hero-kpis{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:#fff;border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs);
+}
+.kpi{padding:1.125rem .875rem;text-align:center;border-right:1px solid var(--gray-100)}
+.kpi:last-child{border-right:none}
+.kpi-n{font-size:1.625rem;font-weight:800;line-height:1;letter-spacing:-.03em;color:var(--black)}
+.kpi-l{font-size:.68rem;font-weight:600;color:var(--gray-400);margin-top:.25rem;text-transform:uppercase;letter-spacing:.04em}
+
+/* ══════════════════════════════
+   TIMELINE
+══════════════════════════════ */
+.tl-wrap{display:grid;grid-template-columns:200px 1fr;gap:3.5rem}
+.tl-nav{position:sticky;top:80px;align-self:start}
+.tl-nav-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:.75rem;padding:0 .5rem}
+.tl-btns{display:flex;flex-direction:column;gap:2px}
+.tl-btn{
+  display:flex;align-items:center;gap:.625rem;
+  padding:.625rem .75rem;border-radius:8px;
+  font-size:.875rem;font-weight:500;color:var(--gray-500);
+  text-align:left;transition:background var(--t),color var(--t);cursor:pointer;
+}
+.tl-btn .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:background var(--t);border:1.5px solid currentColor}
+.tl-btn:hover{background:var(--gray-100);color:var(--black)}
+.tl-btn.on{background:var(--black);color:#fff}
+.tl-btn.on .dot{background:#fff;border-color:#fff}
+
+.tl-entries{display:flex;flex-direction:column}
+.tl-entry{padding:1.75rem 0;border-bottom:1px solid var(--gray-100)}
+.tl-entry:last-child{border-bottom:none}
+.tl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;cursor:pointer}
+.tl-meta{flex:1}
+.tl-cat{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.2rem .55rem;border-radius:4px;margin-bottom:.375rem;
+}
+[data-cat=fintech] .tl-cat{background:#eff6ff;color:#1d4ed8}
+[data-cat=banking] .tl-cat{background:#f5f3ff;color:#6d28d9}
+[data-cat=multimedia] .tl-cat{background:#ecfdf5;color:#065f46}
+[data-cat=early] .tl-cat{background:#fffbeb;color:#92400e}
+.tl-company{font-size:.78rem;font-weight:600;color:var(--gray-400);margin-bottom:.2rem}
+.tl-role{font-size:1.0625rem;font-weight:700;color:var(--black);margin-bottom:.2rem;letter-spacing:-.01em}
+.tl-date{font-size:.8125rem;color:var(--gray-400)}
+.tl-tog{
+  width:30px;height:30px;flex-shrink:0;border-radius:50%;
+  border:1.5px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--t),border-color var(--t);
+}
+.tl-tog svg{width:12px;height:12px;stroke:var(--gray-400);transition:transform var(--t),stroke var(--t)}
+.tl-tog.on{background:var(--black);border-color:var(--black)}
+.tl-tog.on svg{stroke:#fff;transform:rotate(45deg)}
+.tl-body{display:none;padding-top:1.125rem}
+.tl-body.on{display:block}
+.tl-bullets{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+.tl-bullets li{
+  font-size:.9375rem;color:var(--gray-600,#555);line-height:1.65;
+  padding-left:1.25rem;position:relative;font-weight:400;
+}
+.tl-bullets li::before{
+  content:'';position:absolute;left:.25rem;top:.68em;
+  width:5px;height:5px;border-radius:50%;background:var(--blue);
+}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.375rem}
+.tl-tag{font-size:.72rem;font-weight:500;padding:.2rem .6rem;border-radius:100px;background:var(--gray-100);color:var(--gray-500);border:1px solid var(--gray-200)}
+
+/* ══════════════════════════════
+   PROJECTS
+══════════════════════════════ */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.proj-card{
+  background:#fff;border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);overflow:hidden;cursor:pointer;
+  box-shadow:var(--sh-xs);
+  transition:transform var(--t),box-shadow var(--t),border-color var(--t);
+}
+.proj-card:hover{transform:translateY(-5px);box-shadow:var(--sh-lg);border-color:transparent}
+.proj-card.wide{grid-column:span 2;display:grid;grid-template-columns:1.2fr 1fr}
+.proj-img{position:relative;overflow:hidden;background:var(--gray-100)}
+.proj-card.wide .proj-img{min-height:300px}
+.proj-card:not(.wide) .proj-img{height:230px}
+.proj-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.proj-card:hover .proj-img img{transform:scale(1.045)}
+.proj-ol{
+  position:absolute;inset:0;background:rgba(0,0,0,0);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--t);
+}
+.proj-card:hover .proj-ol{background:rgba(0,0,0,.16)}
+.eye-btn{
+  width:44px;height:44px;border-radius:50%;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.8);transition:opacity var(--t),transform var(--t);
+  box-shadow:var(--sh-md);
+}
+.proj-card:hover .eye-btn{opacity:1;transform:scale(1)}
+.eye-btn svg{width:18px;height:18px;stroke:var(--black);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.proj-info{padding:1.5rem 1.75rem;display:flex;flex-direction:column;justify-content:center}
+.proj-cat{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.proj-name{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-bottom:.625rem;color:var(--black)}
+.proj-card.wide .proj-name{font-size:1.5rem}
+.proj-desc{font-size:.9rem;color:var(--gray-500);line-height:1.68;margin-bottom:1rem;font-weight:400}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.375rem;margin-bottom:.875rem}
+.tag{font-size:.7rem;font-weight:500;padding:.25rem .625rem;border-radius:100px;background:var(--gray-100);color:var(--gray-500);border:1px solid var(--gray-200)}
+.tag-b{background:var(--blue-lt);color:var(--blue);border-color:var(--blue-bd)}
+.proj-role{font-size:.78rem;color:var(--gray-400)}
+.proj-role strong{color:var(--gray-700);font-weight:500}
+
+/* ══════════════════════════════
+   GALLERY
+══════════════════════════════ */
+.gal-grid{columns:3;column-gap:1rem}
+.gal-item{
+  break-inside:avoid;margin-bottom:1rem;
+  border-radius:var(--r);overflow:hidden;
+  cursor:pointer;position:relative;
+  border:1px solid var(--gray-100);
+  transition:transform var(--t),box-shadow var(--t);
+}
+.gal-item:hover{transform:translateY(-2px);box-shadow:var(--sh-md)}
+.gal-item img{width:100%;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover img{transform:scale(1.04)}
+.gal-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%);
+  padding:.875rem .875rem .75rem;
+  opacity:0;transition:opacity var(--t);
+}
+.gal-item:hover .gal-cap{opacity:1}
+.gal-cap span{font-size:.775rem;font-weight:500;color:#fff}
+
+/* ══════════════════════════════
+   SKILLS
+══════════════════════════════ */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.sk-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:1.5rem 1.625rem;box-shadow:var(--sh-xs);transition:border-color var(--t),box-shadow var(--t)}
+.sk-card:hover{border-color:var(--blue-bd);box-shadow:var(--sh-sm)}
+.sk-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.sk-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sk-title{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400)}
+.sk-list{display:flex;flex-direction:column;gap:.75rem}
+.sk-row{display:flex;align-items:center;gap:.75rem}
+.sk-tool{width:30px;height:30px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:1px solid var(--gray-200);background:var(--gray-50)}
+.sk-tool svg{width:17px;height:17px}
+.sk-label{font-size:.9rem;font-weight:500;color:var(--gray-700)}
+.sk-sub{font-size:.76rem;color:var(--gray-400)}
+
+/* ══════════════════════════════
+   EXPERIENCE DARK
+══════════════════════════════ */
+.exp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.exp-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:2rem;transition:background var(--t),border-color var(--t)}
+.exp-card:hover{background:rgba(255,255,255,.07);border-color:rgba(37,99,235,.4)}
+.exp-n{font-size:3rem;font-weight:800;line-height:1;letter-spacing:-.04em;color:#93c5fd;margin-bottom:.625rem}
+.exp-card h3{font-size:.9375rem;font-weight:600;color:#fff;margin-bottom:.625rem}
+.exp-card p{font-size:.875rem;color:rgba(255,255,255,.42);line-height:1.65}
+
+/* ══════════════════════════════
+   EDUCATION
+══════════════════════════════ */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:4.5rem}
+.edu-item{padding-top:1.5rem;border-top:2px solid var(--black)}
+.edu-yr{font-size:.75rem;font-weight:600;color:var(--gray-400);margin-bottom:.5rem}
+.edu-school{font-size:1.25rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.25rem}
+.edu-deg{font-size:.9375rem;color:var(--gray-500);line-height:1.5}
+.edu-award{
+  display:inline-flex;align-items:center;gap:.375rem;margin-top:.875rem;
+  font-size:.775rem;font-weight:600;
+  background:#fffbeb;color:#92400e;
+  padding:.3rem .75rem;border-radius:100px;border:1px solid #fde68a;
+}
+.certs-lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.875rem}
+.cert-card{
+  background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--r);padding:1.25rem 1.375rem;
+  text-decoration:none;color:inherit;display:block;
+  transition:border-color var(--t),background var(--t),transform var(--t);
+}
+.cert-card:hover{border-color:var(--blue);background:var(--blue-lt);transform:translateY(-2px)}
+.cert-issuer{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.375rem}
+.cert-name{font-size:.875rem;font-weight:600;color:var(--gray-700);margin-bottom:.25rem;line-height:1.4}
+.cert-meta{font-size:.775rem;color:var(--gray-400)}
+.cert-link{display:inline-flex;align-items:center;gap:.25rem;margin-top:.625rem;font-size:.75rem;font-weight:500;color:var(--blue)}
+.cert-link svg{width:11px;height:11px;stroke:var(--blue);fill:none}
+
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+#contact{background:var(--gray-50);text-align:center}
+.contact-inner{max-width:580px;margin:0 auto}
+.contact-h2{font-size:clamp(2rem,4vw,2.875rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:.875rem}
+.contact-sub{font-size:1rem;color:var(--gray-500);margin-bottom:1.875rem;line-height:1.7}
+.contact-email{
+  display:inline-block;font-size:clamp(1rem,2.5vw,1.375rem);font-weight:700;
+  color:var(--black);letter-spacing:-.02em;margin-bottom:2rem;
+  border-bottom:2px solid var(--black);padding-bottom:.25rem;
+  transition:color var(--t),border-color var(--t);
+}
+.contact-email:hover{color:var(--blue);border-color:var(--blue)}
+.contact-soc{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.csoc{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.625rem 1.25rem;border-radius:100px;
+  border:1.5px solid var(--gray-200);
+  font-size:.875rem;font-weight:500;color:var(--gray-700);
+  transition:border-color var(--t),color var(--t),transform var(--t),background var(--t);
+}
+.csoc:hover{border-color:var(--black);color:var(--black);transform:translateY(-1px);background:#fff}
+.csoc svg{width:15px;height:15px}
+
+/* ─── Footer ─── */
+footer{padding:1.5rem 0;border-top:1px solid var(--gray-100);background:#fff}
+.footer-in{max-width:var(--max);margin:0 auto;padding:0 var(--px);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--gray-400)}
+
+/* ══════════════════════════════
+   MODALS
+══════════════════════════════ */
+.modal-ov{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  opacity:0;pointer-events:none;transition:opacity .28s;
+}
+.modal-ov.open{opacity:1;pointer-events:all}
+.modal{
+  background:#fff;border-radius:var(--r-xl);
+  max-width:860px;width:100%;max-height:90vh;overflow-y:auto;
+  transform:translateY(18px) scale(.98);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:var(--sh-lg);
+}
+.modal-ov.open .modal{transform:translateY(0) scale(1)}
+.modal-x-wrap{position:sticky;top:0;float:right;padding:.875rem .875rem 0 0;z-index:5}
+.modal-x{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--gray-100);border:1px solid var(--gray-200);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background var(--t);
+}
+.modal-x:hover{background:var(--black)}
+.modal-x:hover svg{stroke:#fff}
+.modal-x svg{width:14px;height:14px;stroke:var(--gray-500);stroke-width:2;fill:none}
+.modal-hero{width:100%;height:340px;object-fit:cover;display:block;border-radius:var(--r-xl) var(--r-xl) 0 0;clear:both}
+.modal-body{padding:1.875rem 2.25rem 2.5rem}
+.modal-cat{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.modal-title{font-size:1.875rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.875rem;color:var(--black)}
+.modal-tags{display:flex;gap:.375rem;flex-wrap:wrap;margin-bottom:2rem}
+.modal-secs{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.modal-sec h4{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:.625rem}
+.modal-sec p{font-size:.9375rem;color:var(--gray-500);line-height:1.7}
+/* Modal image gallery */
+.modal-imgs{display:grid;grid-template-columns:repeat(2,1fr);gap:.875rem;margin-top:1.75rem}
+.modal-imgs img{width:100%;height:180px;object-fit:cover;border-radius:var(--r);border:1px solid var(--gray-100)}
+
+/* ─── Lightbox ─── */
+.lbx{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.97);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s}
+.lbx.open{opacity:1;pointer-events:all}
+.lbx img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:8px}
+.lbx-x{position:absolute;top:1.5rem;right:1.5rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--t)}
+.lbx-x:hover{background:rgba(255,255,255,.2)}
+.lbx-x svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none}
+
+/* ─── Reveal ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* ─── Responsive ─── */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .tl-wrap{grid-template-columns:1fr}
+  .tl-nav{position:relative;top:auto}
+  .tl-btns{flex-direction:row;flex-wrap:wrap}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card.wide{grid-column:span 1;grid-template-columns:1fr}
+  .modal-secs{grid-template-columns:1fr}
+  .skills-grid,.exp-cards,.certs-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{columns:2}
+  .edu-grid{grid-template-columns:1fr}
+  .modal-imgs{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .nav-mob{display:flex}
+  .sec{padding:68px 0}
+  .proj-card.wide{grid-template-columns:1fr}
+  .skills-grid,.exp-cards,.certs-grid{grid-template-columns:1fr}
+  .gal-grid{columns:1}
+  .footer-in{flex-direction:column;gap:.5rem;text-align:center}
+  .modal-body{padding:1.25rem 1.5rem 1.75rem}
+  .modal-title{font-size:1.5rem}
+  .modal-hero{height:220px}
+  .modal-imgs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">Yen Nguyen</a>
+    <ul class="nav-links">
+      <li><a href="#timeline">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem">
+      <a href="mailto:yennb.nguyenbaoyen@gmail.com" class="nav-cta">Get in Touch</a>
+      <button class="nav-mob" id="navMob" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#timeline" onclick="closeMob()">Experience</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#education" onclick="closeMob()">Education</a>
+  <a href="mailto:yennb.nguyenbaoyen@gmail.com" onclick="closeMob()">Get in Touch</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <div class="hero-badge reveal">
+          <span class="hero-dot"></span>
+          Available for new opportunities
+        </div>
+        <h1 class="hero-name reveal d1">Yen <em>Nguyen</em></h1>
+        <p class="hero-role reveal d1">Product Designer — UI/UX · Motion · Fintech</p>
+        <p class="hero-desc reveal d2">I design financial products people actually want to use. With 4+ years in product design and a decade in multimedia, I bridge complex fintech requirements with intuitive, high-fidelity experiences — from mobile trading apps to digital banking platforms.</p>
+        <div class="hero-acts reveal d2">
+          <a href="#projects" class="btn-dark">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            View Projects
+          </a>
+          <a href="https://www.behance.net/yennguyen59" target="_blank" class="btn-outline">
+            <!-- Behance icon -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.69.767-.63.165-1.31.254-2.02.254H0V4.503zm-.412 5.56c.585 0 1.06-.14 1.42-.42.35-.28.536-.72.536-1.3 0-.33-.06-.6-.18-.82-.12-.22-.29-.4-.5-.53-.21-.13-.45-.22-.72-.27-.27-.05-.55-.07-.83-.07H3.57v3.42zm.18 5.69c.32 0 .62-.03.9-.09s.52-.17.73-.32c.21-.158.375-.36.495-.618.12-.258.176-.592.176-1.005 0-.79-.22-1.35-.67-1.69-.45-.33-1.05-.5-1.8-.5H3.57v4.22zm8.557.76c.42.41.94.61 1.55.61.48 0 .9-.12 1.24-.36.34-.24.56-.5.65-.78h2.56c-.41 1.28-1.04 2.2-1.9 2.75-.86.55-1.9.83-3.12.83-.85 0-1.61-.14-2.3-.42-.69-.28-1.28-.67-1.77-1.17-.49-.5-.87-1.1-1.13-1.8-.27-.7-.4-1.47-.4-2.3 0-.8.13-1.55.4-2.24.27-.7.64-1.3 1.14-1.8.5-.5 1.09-.9 1.77-1.18.69-.28 1.45-.42 2.27-.42.93 0 1.74.18 2.43.54.69.36 1.25.84 1.69 1.44.44.6.76 1.3.95 2.09.19.79.25 1.63.18 2.52h-7.64c.04.68.26 1.25.67 1.67zm2.68-5.45c-.33-.37-.84-.55-1.52-.55-.44 0-.81.08-1.1.23-.29.16-.52.35-.7.57-.18.23-.3.47-.37.72-.07.25-.11.49-.12.7h4.56c-.08-.76-.37-1.31-.73-1.67zm-1.9-6.57h5.16v1.31h-5.16z"/></svg>
+            Behance
+          </a>
+        </div>
+        <div class="hero-soc reveal d3">
+          <!-- LinkedIn correct icon -->
+          <a href="https://www.linkedin.com/in/yennguyen59/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:yennb.nguyenbaoyen@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            yennb.nguyenbaoyen@gmail.com
+          </a>
+          <a href="tel:+84932060905">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +84 932 060 905
+          </a>
+        </div>
+      </div>
+      <!-- Right visual -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img class="hero-card-img" src="images/Kafi_X_Investment_App.jpg" alt="Kafi X Investment App">
+          <div class="hero-card-foot">
+            <h4>Kafi X — Smart Fintech</h4>
+            <p>Mobile investment platform · 2024–Present</p>
+          </div>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi"><div class="kpi-n">4+</div><div class="kpi-l">Yrs Product Design</div></div>
+          <div class="kpi"><div class="kpi-n">10+</div><div class="kpi-l">Yrs Multimedia</div></div>
+          <div class="kpi"><div class="kpi-n">8+</div><div class="kpi-l">Major Products</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Career Journey
+      </p>
+      <h2 class="sec-h2">From Multimedia<br>to <em>Fintech Product Design</em></h2>
+      <p class="sec-sub">A decade-long journey spanning digital banking, fintech ecosystems, multimedia, and finance — each chapter building a sharper design perspective.</p>
+    </div>
+    <div class="tl-wrap">
+      <!-- Sidebar filter -->
+      <div class="tl-nav reveal">
+        <p class="tl-nav-label">Filter by Phase</p>
+        <div class="tl-btns">
+          <button class="tl-btn on" data-f="all"><span class="dot"></span>All Roles</button>
+          <button class="tl-btn" data-f="fintech"><span class="dot"></span>Fintech</button>
+          <button class="tl-btn" data-f="banking"><span class="dot"></span>Banking</button>
+          <button class="tl-btn" data-f="multimedia"><span class="dot"></span>Multimedia</button>
+          <button class="tl-btn" data-f="early"><span class="dot"></span>Early Career</button>
+        </div>
+      </div>
+
+      <!-- Entries -->
+      <div id="tlEntries">
+        <!-- KAFI -->
+        <div class="tl-entry reveal" data-cat="fintech">
+          <div class="tl-head" onclick="toggleTl(this)">
+            <div class="tl-meta">
+              <span class="tl-cat">Fintech</span>
+              <div class="tl-company">Kafi Securities</div>
+              <div class="tl-role">Product Design Professional (UI/UX)</div>
+              <div class="tl-date">Feb 2024 — Present</div>
+            </div>
+            <button class="tl-tog on"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          </div>
+          <div class="tl-body on">
+            <ul class="tl-bullets">
+              <li>Designed end-to-end UX for the <strong>Kafi X ecosystem</strong> — mobile investment app (KOA) and professional web platform (Kafi X Pro) — ensuring a unified cross-platform experience.</li>
+              <li>Led the full design cycle for <strong>Kafi Bond</strong> and <strong>Kafi Cash</strong>: user flows, wireframes, high-fidelity UI, and interactive prototypes for both mobile and web.</li>
+              <li>Conceptualized and executed Kafi's new website direction — introducing an immersive dark-mode editorial aesthetic aligned with forward-looking fintech trends.</li>
+              <li>Partnered daily with POs, BAs, and Engineering to translate complex financial requirements into intuitive, buildable product features.</li>
+              <li>Maintained shared design system and component library to guarantee visual consistency at scale across all Kafi digital products.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tl-tag">Figma</span><span class="tl-tag">Design System</span><span class="tl-tag">Fintech</span><span class="tl-tag">Prototyping</span><span class="tl-tag">Cross-Platform</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIB -->
+        <div class="tl-entry reveal d1" data-cat="banking">
+          <div class="tl-head" onclick="toggleTl(this)">
+            <div class="tl-meta">
+              <span class="tl-cat">Digital Banking</span>
+              <div class="tl-company">Vietnam International Bank (VIB)</div>
+              <div class="tl-role">Digital UI/UX Design Senior Specialist</div>
+              <div class="tl-date">Jan 2022 — Feb 2024</div>
+            </div>
+            <button class="tl-tog"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-bullets">
+              <li>Drove the UX transformation of <strong>MyVIB 2.0</strong> — redesigning core banking interfaces to simplify complex financial workflows for millions of retail users.</li>
+              <li>Produced Lottie animations and motion graphics across all app screens, elevating brand polish and in-app engagement.</li>
+              <li>Designed end-to-end gamification concepts (<strong>MyVIB Discovery & VIBGO</strong>) — flows, visual assets, and interactive prototypes — that successfully cleared UAT.</li>
+              <li>Conducted comprehensive UI/UX audits of MyVIB and Smart Sales platforms, delivering structured design-led improvement proposals to product leadership.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tl-tag">Digital Banking</span><span class="tl-tag">Lottie</span><span class="tl-tag">After Effects</span><span class="tl-tag">Gamification</span><span class="tl-tag">UAT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOLID INTERIOR -->
+        <div class="tl-entry reveal d2" data-cat="multimedia">
+          <div class="tl-head" onclick="toggleTl(this)">
+            <div class="tl-meta">
+              <span class="tl-cat">Multimedia & Design</span>
+              <div class="tl-company">Solid Interior C.O + Freelance</div>
+              <div class="tl-role">BD Senior & Project Manager</div>
+              <div class="tl-date">Jan 2017 — Dec 2021</div>
+            </div>
+            <button class="tl-tog"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-bullets">
+              <li>Led corporate office renovation projects end-to-end — managing client briefs, design teams, and on-site execution across multiple concurrent contracts.</li>
+              <li>Completed a Diploma in Multimedia (Arena Multimedia, 2019–2021), graduating with an <strong>Outstanding Student Award</strong> for the Darlac Chocolate brand project.</li>
+              <li>Designed mobile and web e-commerce platforms for <strong>MÍA</strong> and <strong>WOODECOR</strong> — brand identity, UI/UX, and interactive prototypes.</li>
+              <li>Produced high-quality product videos, stop-motion productions, and event motion graphics using Adobe Creative Suite.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tl-tag">Brand Identity</span><span class="tl-tag">E-Commerce</span><span class="tl-tag">Video Production</span><span class="tl-tag">Project Management</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DONG A BANK -->
+        <div class="tl-entry reveal d3" data-cat="early">
+          <div class="tl-head" onclick="toggleTl(this)">
+            <div class="tl-meta">
+              <span class="tl-cat">Early Career</span>
+              <div class="tl-company">Dong A Bank</div>
+              <div class="tl-role">Personal Financial Advisor</div>
+              <div class="tl-date">Oct 2010 — Dec 2016</div>
+            </div>
+            <button class="tl-tog"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          </div>
+          <div class="tl-body">
+            <ul class="tl-bullets">
+              <li>Delivered personalized financial planning to retail clients — building deep domain knowledge in banking products and user financial behaviors that now directly informs every fintech design decision.</li>
+              <li>Developed strong communication and advisory skills now channeled into cross-functional stakeholder management and user empathy within product teams.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="tl-tag">Banking</span><span class="tl-tag">Financial Products</span><span class="tl-tag">Client Advisory</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tlEntries -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects" class="sec sec-white">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Featured Work
+      </p>
+      <h2 class="sec-h2">Products Designed<br>with <em>Purpose</em></h2>
+      <p class="sec-sub">From mobile investment apps to digital banking platforms — projects where design clarity meets financial complexity.</p>
+    </div>
+    <div class="proj-grid">
+
+      <!-- Kafi X WIDE FEATURED -->
+      <div class="proj-card wide reveal" onclick="openModal('mKafiX')">
+        <div class="proj-img">
+          <img src="images/Kafi_X.jpg" alt="Kafi X Smart Investment Platform">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Fintech Ecosystem · 2024–Present</p>
+          <h3 class="proj-name">Kafi X — Smart Investment Platform</h3>
+          <p class="proj-desc">A next-generation investment ecosystem enabling fast, secure trading of stocks, derivatives, and bonds. Designed cross-platform for both casual investors and professional traders — balancing simplicity with power.</p>
+          <div class="proj-tags">
+            <span class="tag tag-b">Mobile App</span><span class="tag tag-b">Web Platform</span><span class="tag">User Flows</span><span class="tag">High-Fidelity UI</span><span class="tag">Prototyping</span>
+          </div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer &nbsp;·&nbsp; <strong>Platform:</strong> iOS, Android, Web</p>
+        </div>
+      </div>
+
+      <!-- Kafi Bond -->
+      <div class="proj-card reveal" onclick="openModal('mKafiBond')">
+        <div class="proj-img">
+          <img src="images/Kafi_Bond.jpg" alt="Kafi Bond Digital Investment">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Digital Investment · Cross-Platform</p>
+          <h3 class="proj-name">Kafi Bond</h3>
+          <p class="proj-desc">Simplified corporate bond trading for retail investors. End-to-end design across mobile and web — making complex financial instruments approachable through clear IA and guided subscription flows.</p>
+          <div class="proj-tags"><span class="tag tag-b">Mobile</span><span class="tag tag-b">Web</span><span class="tag">Bond Trading</span><span class="tag">Information Architecture</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer</p>
+        </div>
+      </div>
+
+      <!-- MyVIB 2.0 -->
+      <div class="proj-card reveal d1" onclick="openModal('mMyVIB')">
+        <div class="proj-img">
+          <img src="images/MyVIB_2_0.jpg" alt="MyVIB 2.0 Digital Banking">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Digital Banking · 2022–2024</p>
+          <h3 class="proj-name">MyVIB 2.0</h3>
+          <p class="proj-desc">Large-scale modernization of VIB's digital banking app — redesigned UI, Lottie motion animations, and gamification features (MyVIB Discovery & VIBGO) cleared full UAT.</p>
+          <div class="proj-tags"><span class="tag tag-b">iOS</span><span class="tag tag-b">Android</span><span class="tag">Motion Design</span><span class="tag">Gamification</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer, Motion Design</p>
+        </div>
+      </div>
+
+      <!-- Kafi Website Concept WIDE -->
+      <div class="proj-card wide reveal" onclick="openModal('mKafiConcept')">
+        <div class="proj-img">
+          <img src="images/Kafi_Website_Concept.jpg" alt="Kafi Website Concept 2025">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Website Design · 2025 Concept</p>
+          <h3 class="proj-name">Kafi Website — Dark Concept</h3>
+          <p class="proj-desc">A bold conceptual redesign proposing an immersive dark-mode editorial aesthetic — redefining Kafi's digital presence, visual storytelling, and conversion paths aligned with forward-looking fintech trends.</p>
+          <div class="proj-tags"><span class="tag tag-b">Web</span><span class="tag">Dark Mode</span><span class="tag">Brand Concept</span><span class="tag">Conversion Optimization</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer &nbsp;·&nbsp; <strong>Platform:</strong> Desktop + Mobile</p>
+        </div>
+      </div>
+
+      <!-- Kafi Website Redesign -->
+      <div class="proj-card reveal" onclick="openModal('mKafiRedesign')">
+        <div class="proj-img">
+          <img src="images/Kafi_Website_Redesign.jpg" alt="Kafi Website Redesign">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Website Redesign · System Consistent</p>
+          <h3 class="proj-name">Kafi Website — Redesign</h3>
+          <p class="proj-desc">System-consistent redesign of the homepage and 8+ specialized sub-pages — optimizing content structure, improving readability, and refining layouts while maintaining brand guidelines.</p>
+          <div class="proj-tags"><span class="tag tag-b">Web</span><span class="tag">Design System</span><span class="tag">Content Strategy</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer</p>
+        </div>
+      </div>
+
+      <!-- Kafi New Website -->
+      <div class="proj-card reveal d1" onclick="openModal('mKafiNew')">
+        <div class="proj-img">
+          <img src="images/Kafi_New_Website.jpg" alt="Kafi New Website">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Website · Detailed Execution</p>
+          <h3 class="proj-name">Kafi New Website</h3>
+          <p class="proj-desc">Translated the high-level concept into functional layouts — executing detailed screens and specialized sub-pages for Market Analysis, Careers, and Investor Relations sections.</p>
+          <div class="proj-tags"><span class="tag tag-b">Web</span><span class="tag">UI System</span><span class="tag">Prototypes</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer</p>
+        </div>
+      </div>
+
+      <!-- Future Investor WIDE -->
+      <div class="proj-card wide reveal" onclick="openModal('mFuture')">
+        <div class="proj-img">
+          <img src="images/Future_Investor.jpg" alt="Future Investor Landing Page">
+          <div class="proj-ol"><div class="eye-btn"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+        </div>
+        <div class="proj-info">
+          <p class="proj-cat">Landing Page · Kafi × Van Lang University</p>
+          <h3 class="proj-name">Future Investor — Nhà Đầu Tư Tương Lai</h3>
+          <p class="proj-desc">Transformed a complex competition framework into a high-conversion landing page for Gen Z. Dense rules, prize structures, and timelines organized into a clean visual hierarchy — fully responsive across all breakpoints.</p>
+          <div class="proj-tags"><span class="tag tag-b">Desktop</span><span class="tag tag-b">Mobile</span><span class="tag">Gen Z</span><span class="tag">High-Conversion</span><span class="tag">Responsive</span></div>
+          <p class="proj-role"><strong>Role:</strong> UI/UX Designer &nbsp;·&nbsp; <strong>Partner:</strong> Kafi × Van Lang University</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 4-4 4 4 4-4 4 4"/><path d="M3 15h18"/></svg>
+        Project Gallery
+      </p>
+      <h2 class="sec-h2">Work in <em>Context</em></h2>
+      <p class="sec-sub">A curated view across the full spectrum of work — apps, websites, brand, and motion design spanning the career.</p>
+    </div>
+    <div class="gal-grid reveal" id="galGrid">
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_X_screens_overview.jpg" alt="Kafi X Screens Overview">
+        <div class="gal-cap"><span>Kafi X — Full Screens Overview</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_X_Investment_App.jpg" alt="Kafi X Investment App">
+        <div class="gal-cap"><span>Kafi X — Investment App UI</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_Bond.jpg" alt="Kafi Bond Mobile & Web">
+        <div class="gal-cap"><span>Kafi Bond — Mobile &amp; Web Platform</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/MyVIB_2_0.jpg" alt="MyVIB 2.0 Digital Banking">
+        <div class="gal-cap"><span>MyVIB 2.0 — Digital Banking App</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_Website_Concept.jpg" alt="Kafi Website Dark Concept">
+        <div class="gal-cap"><span>Kafi Website — Dark Mode Concept</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_Website_Redesign.jpg" alt="Kafi Website Redesign">
+        <div class="gal-cap"><span>Kafi Website — System Redesign</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Kafi_New_Website.jpg" alt="Kafi New Website Sub-Pages">
+        <div class="gal-cap"><span>Kafi — New Website Sub-Pages</span></div>
+      </div>
+      <div class="gal-item" onclick="openLbx(this)">
+        <img src="images/Future_Investor.jpg" alt="Future Investor Landing Page">
+        <div class="gal-cap"><span>Future Investor — Landing Page</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" class="sec sec-white">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        Skills &amp; Tools
+      </p>
+      <h2 class="sec-h2">Design <em>Stack</em></h2>
+      <p class="sec-sub">A well-rounded toolkit spanning product design, motion, and brand — refined over a decade of cross-disciplinary work.</p>
+    </div>
+    <div class="skills-grid">
+
+      <!-- Product Design -->
+      <div class="sk-card reveal">
+        <div class="sk-head">
+          <div class="sk-icon" style="background:#eff6ff">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <p class="sk-title">Product Design</p>
+        </div>
+        <div class="sk-list">
+          <!-- Figma -->
+          <div class="sk-row">
+            <div class="sk-tool">
+              <svg viewBox="0 0 38 57" width="16" height="16"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="#1ABCFE"/><path d="M9.5 57A9.5 9.5 0 0 1 9.5 38h9.5v9.5A9.5 9.5 0 0 1 9.5 57z" fill="#0ACF83"/><path d="M19 0.5h-9.5A9.5 9.5 0 0 0 9.5 19H19z" fill="#FF7262"/><path d="M28.5 19A9.5 9.5 0 0 0 19 9.5V28.5a9.5 9.5 0 0 0 9.5-9.5z" fill="#FF7262"/><path d="M19 9.5H9.5a9.5 9.5 0 0 0 0 19H19z" fill="#F24E1E"/><path d="M19 9.5h9.5a9.5 9.5 0 0 0 0-9H19z" fill="#A259FF"/></svg>
+            </div>
+            <div><p class="sk-label">Figma</p><p class="sk-sub">UI, Components, Prototyping</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#1168b7">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><text x="2" y="18" font-size="14" font-weight="800" font-family="Arial">W</text></svg>
+            </div>
+            <div><p class="sk-label">Wireframing</p><p class="sk-sub">User Flows & IA</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#f0f0f0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div><p class="sk-label">Design Systems</p><p class="sk-sub">Libraries & Component Specs</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motion & Multimedia -->
+      <div class="sk-card reveal d1">
+        <div class="sk-head">
+          <div class="sk-icon" style="background:#fdf2f8">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9d174d" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <p class="sk-title">Motion & Multimedia</p>
+        </div>
+        <div class="sk-list">
+          <!-- After Effects -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#1a0536">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="1" y="17" font-size="11" font-weight="900" font-family="Arial" fill="#9999FF">Ae</text></svg>
+            </div>
+            <div><p class="sk-label">Adobe After Effects</p><p class="sk-sub">Motion, Lottie Animations</p></div>
+          </div>
+          <!-- Media Encoder -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#0d1438">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="1" y="17" font-size="11" font-weight="900" font-family="Arial" fill="#9999FF">Me</text></svg>
+            </div>
+            <div><p class="sk-label">Adobe Media Encoder</p><p class="sk-sub">Video Export & Encoding</p></div>
+          </div>
+          <!-- Final Cut Pro -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#1c1c1c">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0 0 10 9.87v4.263a1 1 0 0 0 1.555.832l3.197-2.132a1 1 0 0 0 0-1.664z"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            </div>
+            <div><p class="sk-label">Final Cut Pro</p><p class="sk-sub">Video Editing</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adobe Suite -->
+      <div class="sk-card reveal d2">
+        <div class="sk-head">
+          <div class="sk-icon" style="background:#fff3e0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <p class="sk-title">Adobe Creative Suite</p>
+        </div>
+        <div class="sk-list">
+          <!-- Illustrator -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#330000">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="1" y="17" font-size="11" font-weight="900" font-family="Arial" fill="#FF9A00">Ai</text></svg>
+            </div>
+            <div><p class="sk-label">Adobe Illustrator</p><p class="sk-sub">Icons, Vectors, Brand</p></div>
+          </div>
+          <!-- Photoshop -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#001e36">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="1" y="17" font-size="11" font-weight="900" font-family="Arial" fill="#31A8FF">Ps</text></svg>
+            </div>
+            <div><p class="sk-label">Adobe Photoshop</p><p class="sk-sub">Visual Production</p></div>
+          </div>
+          <!-- InDesign -->
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#49021f">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="1" y="17" font-size="11" font-weight="900" font-family="Arial" fill="#FF3366">Id</text></svg>
+            </div>
+            <div><p class="sk-label">Adobe InDesign</p><p class="sk-sub">Layout & Print Design</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow -->
+      <div class="sk-card reveal">
+        <div class="sk-head">
+          <div class="sk-icon" style="background:#f0fdf4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="sk-title">Collaboration & Workflow</p>
+        </div>
+        <div class="sk-list">
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#f3f0ee">
+              <svg viewBox="0 0 24 24" width="17" height="17"><text x="3" y="17" font-size="14" font-weight="900" font-family="Arial" fill="#000">N</text></svg>
+            </div>
+            <div><p class="sk-label">Notion</p><p class="sk-sub">Documentation & Planning</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#f0f0f0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div><p class="sk-label">Agile / Scrum</p><p class="sk-sub">Cross-functional Collaboration</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#f0f0f0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div><p class="sk-label">Microsoft Office</p><p class="sk-sub">Presentations & Reports</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Knowledge -->
+      <div class="sk-card reveal d1" style="grid-column:span 2">
+        <div class="sk-head">
+          <div class="sk-icon" style="background:#eff6ff">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <p class="sk-title">Domain Expertise</p>
+        </div>
+        <div class="sk-list" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#eff6ff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <div><p class="sk-label">Fintech & Investment</p><p class="sk-sub">Stocks, Bonds, Derivatives</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#f5f3ff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+            <div><p class="sk-label">Digital Banking</p><p class="sk-sub">Retail Banking UX</p></div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-tool" style="background:#fef3c7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+            <div><p class="sk-label">Brand & Multimedia</p><p class="sk-sub">Identity & Motion</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE HIGHLIGHT ═══ -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip" style="color:#93c5fd">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        What I Bring
+      </p>
+      <h2 class="sec-h2" style="color:#fff">Product thinking<br><em>rooted in real finance</em></h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.5)">Having worked as a financial advisor before becoming a designer, I bring a rare combination: genuine empathy for users navigating complex financial decisions, and the design craft to make those decisions feel intuitive.</p>
+    </div>
+    <div class="exp-cards">
+      <div class="exp-card reveal">
+        <div class="exp-n">4+</div>
+        <h3>Years in Product Design</h3>
+        <p>Specialized in UI/UX for fintech and digital banking — shipping products used by real investors and banking customers daily.</p>
+      </div>
+      <div class="exp-card reveal d1">
+        <div class="exp-n">10+</div>
+        <h3>Years in Multimedia</h3>
+        <p>Deep expertise in motion design, brand identity, and video production — enabling full creative ownership from concept to delivery.</p>
+      </div>
+      <div class="exp-card reveal d2">
+        <div class="exp-n">6+</div>
+        <h3>Years in Financial Advisory</h3>
+        <p>Firsthand understanding of how users think about money — channeled into products that genuinely meet them where they are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education" class="sec sec-white">
+  <div class="wrap">
+    <div class="sh-block reveal">
+      <p class="sec-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education &amp; Certifications
+      </p>
+      <h2 class="sec-h2">Foundations &amp;<br><em>Continuous Learning</em></h2>
+    </div>
+
+    <div class="edu-grid reveal">
+      <div class="edu-item">
+        <p class="edu-yr">May 2019 — Oct 2021</p>
+        <h3 class="edu-school">Arena Multimedia</h3>
+        <p class="edu-deg">Diploma in Multimedia Design</p>
+        <div class="edu-award">🏆 Outstanding Student Award — Darlac Chocolate project</div>
+      </div>
+      <div class="edu-item">
+        <p class="edu-yr">Sep 2004 — May 2009</p>
+        <h3 class="edu-school">Nong Lam University HCMC</h3>
+        <p class="edu-deg">Bachelor of Economics<br><span style="font-size:.875rem;color:var(--gray-400)">Foundation in financial systems and business logic</span></p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="certs-lbl">Professional Certifications — All Verified</p>
+      <div class="certs-grid">
+        <a href="https://www.coursera.org/account/accomplishments/certificate/8BKH9QKLMFKA" target="_blank" class="cert-card">
+          <p class="cert-issuer">UCI · Coursera · Oct 2021</p>
+          <p class="cert-name">Initiating &amp; Planning Projects</p>
+          <p class="cert-meta">Project management fundamentals for product-led teams</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/ZYBFDBDC5UBV" target="_blank" class="cert-card">
+          <p class="cert-issuer">UCI · Coursera · Oct 2021</p>
+          <p class="cert-name">Budgeting &amp; Scheduling Projects</p>
+          <p class="cert-meta">Resource and timeline management for product teams</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/ARZM3UEAJ2UV" target="_blank" class="cert-card">
+          <p class="cert-issuer">UCI · Coursera · Oct 2021</p>
+          <p class="cert-name">Managing Project Risks &amp; Changes</p>
+          <p class="cert-meta">Risk-aware design and delivery framework</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/LPX2NN52ETFM" target="_blank" class="cert-card">
+          <p class="cert-issuer">UVA × BCG · Coursera · May 2021</p>
+          <p class="cert-name">Digital Transformation</p>
+          <p class="cert-meta">Strategic frameworks for digital product change</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/YM3A6BJNXP2X" target="_blank" class="cert-card">
+          <p class="cert-issuer">Illinois · Coursera · 2020</p>
+          <p class="cert-name">Foundations of Everyday Leadership</p>
+          <p class="cert-meta">Communication, influence, and team collaboration</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/certificate/7QU9T88AKX9X" target="_blank" class="cert-card">
+          <p class="cert-issuer">Illinois · Coursera · 2020</p>
+          <p class="cert-name">Designing the Organization</p>
+          <p class="cert-meta">Structural thinking for design and product teams</p>
+          <span class="cert-link">View Certificate <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="sec sec-alt">
+  <div class="wrap">
+    <div class="contact-inner">
+      <p class="sec-chip reveal" style="justify-content:center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Let's Work Together
+      </p>
+      <h2 class="contact-h2 reveal">Have a product that needs<br>thoughtful design?</h2>
+      <p class="contact-sub reveal">Open to senior product design roles, fintech projects, and meaningful collaborations. If you're building something ambitious — let's talk.</p>
+      <a href="mailto:yennb.nguyenbaoyen@gmail.com" class="contact-email reveal">yennb.nguyenbaoyen@gmail.com</a>
+      <div class="contact-soc reveal">
+        <!-- LinkedIn correct -->
+        <a href="https://www.linkedin.com/in/yennguyen59/" target="_blank" class="csoc">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <!-- Behance correct -->
+        <a href="https://www.behance.net/yennguyen59" target="_blank" class="csoc">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.69.767-.63.165-1.31.254-2.02.254H0V4.503zm-.412 5.56c.585 0 1.06-.14 1.42-.42.35-.28.536-.72.536-1.3 0-.33-.06-.6-.18-.82-.12-.22-.29-.4-.5-.53-.21-.13-.45-.22-.72-.27-.27-.05-.55-.07-.83-.07H3.57v3.42zm.18 5.69c.32 0 .62-.03.9-.09s.52-.17.73-.32c.21-.158.375-.36.495-.618.12-.258.176-.592.176-1.005 0-.79-.22-1.35-.67-1.69-.45-.33-1.05-.5-1.8-.5H3.57v4.22zm8.557.76c.42.41.94.61 1.55.61.48 0 .9-.12 1.24-.36.34-.24.56-.5.65-.78h2.56c-.41 1.28-1.04 2.2-1.9 2.75-.86.55-1.9.83-3.12.83-.85 0-1.61-.14-2.3-.42-.69-.28-1.28-.67-1.77-1.17-.49-.5-.87-1.1-1.13-1.8-.27-.7-.4-1.47-.4-2.3 0-.8.13-1.55.4-2.24.27-.7.64-1.3 1.14-1.8.5-.5 1.09-.9 1.77-1.18.69-.28 1.45-.42 2.27-.42.93 0 1.74.18 2.43.54.69.36 1.25.84 1.69 1.44.44.6.76 1.3.95 2.09.19.79.25 1.63.18 2.52h-7.64c.04.68.26 1.25.67 1.67zm2.68-5.45c-.33-.37-.84-.55-1.52-.55-.44 0-.81.08-1.1.23-.29.16-.52.35-.7.57-.18.23-.3.47-.37.72-.07.25-.11.49-.12.7h4.56c-.08-.76-.37-1.31-.73-1.67zm-1.9-6.57h5.16v1.31h-5.16z"/></svg>
+          Behance
+        </a>
+        <a href="tel:+84932060905" class="csoc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +84 932 060 905
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-in">
+    <span>© 2026 Yen Nguyen · Product Designer · Ho Chi Minh City, Vietnam</span>
+    <span>Designed with intention.</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+   MODALS
+══════════════════════════════════════════ -->
+
+<!-- KAFI X -->
+<div class="modal-ov" id="mKafiX">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mKafiX')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Kafi_X.jpg" class="modal-hero" alt="Kafi X">
+    <div class="modal-body">
+      <p class="modal-cat">Fintech Ecosystem · 2024–Present</p>
+      <h2 class="modal-title">Kafi X — Smart Investment Platform</h2>
+      <div class="modal-tags"><span class="tag tag-b">Mobile App</span><span class="tag tag-b">Web Platform</span><span class="tag">User Flows</span><span class="tag">Wireframes</span><span class="tag">Prototypes</span><span class="tag">Design System</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>Retail investors in Vietnam needed a modern platform to trade stocks, derivatives, and bonds — but existing tools were either too complex for beginners or too limited for professional traders. A unified ecosystem serving both audiences was missing.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Mapped distinct user journeys for both investor profiles. Designed a modular system that adapts complexity to user expertise — simple views for new investors, powerful tools for professionals — while maintaining visual consistency across mobile (KOA) and web (Kafi X Pro).</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A unified investment ecosystem live across iOS, Android, and web. Established the design language and component library now used across all Kafi digital products — including Kafi Bond and Kafi Cash as embedded sub-products.</p></div>
+      </div>
+      <div class="modal-imgs">
+        <img src="images/Kafi_X_Investment_App.jpg" alt="Kafi X App Screens">
+        <img src="images/Kafi_X_screens_overview.jpg" alt="Kafi X Overview">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KAFI BOND -->
+<div class="modal-ov" id="mKafiBond">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mKafiBond')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Kafi_Bond.jpg" class="modal-hero" alt="Kafi Bond">
+    <div class="modal-body">
+      <p class="modal-cat">Digital Investment · Cross-Platform</p>
+      <h2 class="modal-title">Kafi Bond — Corporate Bond Trading</h2>
+      <div class="modal-tags"><span class="tag tag-b">Mobile App</span><span class="tag tag-b">Web (x.kafi.vn)</span><span class="tag">Bond Trading</span><span class="tag">Information Architecture</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>Corporate bond subscriptions involve complex financial data, legal terminology, and multi-step processes that intimidate retail investors — creating high drop-off rates before transaction completion.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Redesigned the information architecture to progressively disclose complexity. Guided users step-by-step through subscription flows using clear visual language to surface key data (yield, term, risk) without overwhelming detail.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A live product at x.kafi.vn enabling retail investors to confidently participate in corporate bond markets. Full design coverage from user flows through production UI, integrated into the Kafi X ecosystem.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MYVIB -->
+<div class="modal-ov" id="mMyVIB">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mMyVIB')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/MyVIB_2_0.jpg" class="modal-hero" alt="MyVIB 2.0">
+    <div class="modal-body">
+      <p class="modal-cat">Digital Banking · 2022–2024</p>
+      <h2 class="modal-title">MyVIB 2.0 — Digital Banking Transformation</h2>
+      <div class="modal-tags"><span class="tag tag-b">iOS</span><span class="tag tag-b">Android</span><span class="tag">Motion Design</span><span class="tag">Lottie</span><span class="tag">Gamification</span><span class="tag">UAT Passed</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>VIB's digital banking app needed a comprehensive upgrade to meet rising user expectations — simplifying complex banking workflows, elevating visual quality, and building sustained user engagement through new mechanics.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Contributed to the core interface redesign, produced all motion graphics and Lottie animations across app screens, and designed two gamification concepts (MyVIB Discovery & VIBGO) end-to-end — from concept through interactive prototype and UAT validation.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A modernized digital banking experience serving millions of VIB customers. All gamification concepts cleared UAT. Motion design shipped across the full app, establishing a higher benchmark for VIB's digital brand quality.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KAFI WEBSITE CONCEPT -->
+<div class="modal-ov" id="mKafiConcept">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mKafiConcept')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Kafi_Website_Concept.jpg" class="modal-hero" alt="Kafi Website Concept">
+    <div class="modal-body">
+      <p class="modal-cat">Website Design · 2025 Concept</p>
+      <h2 class="modal-title">Kafi Website — Dark Mode Concept</h2>
+      <div class="modal-tags"><span class="tag tag-b">Web</span><span class="tag">Dark Mode</span><span class="tag">Brand Storytelling</span><span class="tag">Conversion Optimization</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>Kafi's existing web presence didn't fully communicate the brand's ambition or modern product quality. A new visual direction was needed to align with emerging fintech trends and strengthen investor confidence.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Proposed an immersive dark-mode editorial aesthetic drawing on premium global fintech visual languages. Restructured conversion paths to guide high-intent visitors toward account opening CTAs, with bold typography anchoring the brand story.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A conceptual UI framework setting the visual and strategic direction for Kafi's next digital chapter — establishing a new benchmark for fintech brand design in the Vietnamese market.</p></div>
+      </div>
+      <div class="modal-imgs">
+        <img src="images/Kafi_Website_Redesign.jpg" alt="Kafi Redesign">
+        <img src="images/Kafi_New_Website.jpg" alt="Kafi New Website">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KAFI WEBSITE REDESIGN -->
+<div class="modal-ov" id="mKafiRedesign">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mKafiRedesign')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Kafi_Website_Redesign.jpg" class="modal-hero" alt="Kafi Website Redesign">
+    <div class="modal-body">
+      <p class="modal-cat">Website Redesign · System Consistent</p>
+      <h2 class="modal-title">Kafi Website — Redesign</h2>
+      <div class="modal-tags"><span class="tag tag-b">Web</span><span class="tag">Design System</span><span class="tag">Content Strategy</span><span class="tag">UI Refinement</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>The existing Kafi website had inconsistent layouts, poor information hierarchy, and sub-optimal content structure across specialized sections — reducing readability and conversion potential.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Redesigned the homepage and integrated 8+ specialized sub-pages (Kafi Trade, Kafi Invest, Partner, Market Analysis, News, Rewards, Notifications) — adhering strictly to the existing design system while improving layout quality and content clarity.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A fully redesigned web presence with optimized information structure, consistent visual language, and improved readability — shipped in alignment with Kafi's brand guidelines and engineering constraints.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KAFI NEW WEBSITE -->
+<div class="modal-ov" id="mKafiNew">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mKafiNew')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Kafi_New_Website.jpg" class="modal-hero" alt="Kafi New Website">
+    <div class="modal-body">
+      <p class="modal-cat">Website · Detailed Screen Execution</p>
+      <h2 class="modal-title">Kafi New Website — Sub-Page System</h2>
+      <div class="modal-tags"><span class="tag tag-b">Web</span><span class="tag">UI System</span><span class="tag">Page Layouts</span><span class="tag">Prototypes</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>The high-level conceptual direction required detailed execution for specialized content sections — Market Analysis, Careers, Investor Relations — each with distinct content models and user needs.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Translated the macro concept into granular screen designs — defining content zones, component hierarchies, and responsive behaviors for each specialized section with precision and consistency.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A complete UI system and detailed page layouts delivered for Market Analysis, Careers, and Investor Relations — fully prototyped for engineering handoff and stakeholder presentation.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FUTURE INVESTOR -->
+<div class="modal-ov" id="mFuture">
+  <div class="modal">
+    <div class="modal-x-wrap"><button class="modal-x" onclick="closeModal('mFuture')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <img src="images/Future_Investor.jpg" class="modal-hero" alt="Future Investor Landing Page">
+    <div class="modal-body">
+      <p class="modal-cat">Landing Page · Kafi × Van Lang University</p>
+      <h2 class="modal-title">Future Investor — Nhà Đầu Tư Tương Lai</h2>
+      <div class="modal-tags"><span class="tag tag-b">Desktop</span><span class="tag tag-b">Mobile</span><span class="tag">Gen Z</span><span class="tag">High-Conversion</span><span class="tag">Responsive</span></div>
+      <div class="modal-secs">
+        <div class="modal-sec"><h4>Problem</h4><p>A complex investment competition with dense rules, prize structures, and registration flows needed to be presented to Gen Z university students — an audience that expects immediate clarity and zero friction.</p></div>
+        <div class="modal-sec"><h4>Approach</h4><p>Simplified the registration flow into a clear conversion funnel. Organized all competition information into a visual hierarchy using timeline components, highlight cards, and bold typography — fully responsive across all breakpoints.</p></div>
+        <div class="modal-sec"><h4>Outcome</h4><p>A high-fidelity responsive landing page with a polished UI system covering desktop and mobile. Clear conversion path from awareness to registration, with complex program information made instantly scannable for a Gen Z audience.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lbx" id="lbx">
+  <button class="lbx-x" onclick="closeLbx()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <img id="lbxImg" src="" alt="">
+</div>
+
+<!-- ══════════════════════════════════════════
+   JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  // ── Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('on', window.scrollY > 20), {passive:true});
+
+  // ── Mobile menu
+  const navMob = document.getElementById('navMob');
+  const mobMenu = document.getElementById('mobMenu');
+  let mobOpen = false;
+  navMob.addEventListener('click', () => {
+    mobOpen = !mobOpen;
+    mobMenu.classList.toggle('open', mobOpen);
+  });
+  function closeMob(){ mobOpen = false; mobMenu.classList.remove('open'); }
+
+  // ── Scroll reveal
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); revObs.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  // ── Timeline toggle
+  function toggleTl(head) {
+    const body = head.nextElementSibling;
+    const tog = head.querySelector('.tl-tog');
+    const isOpen = body.classList.contains('on');
+    body.classList.toggle('on', !isOpen);
+    tog.classList.toggle('on', !isOpen);
+  }
+
+  // ── Timeline filter
+  document.querySelectorAll('.tl-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tl-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const f = btn.dataset.f;
+      document.querySelectorAll('.tl-entry').forEach(e => {
+        e.style.display = (f === 'all' || e.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+
+  // ── Modals
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-ov').forEach(o => {
+    o.addEventListener('click', e => {
+      if(e.target === o) { o.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+  });
+
+  // ── Lightbox
+  function openLbx(item) {
+    const img = item.querySelector('img');
+    if(!img) return;
+    document.getElementById('lbxImg').src = img.src;
+    document.getElementById('lbx').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLbx() {
+    document.getElementById('lbx').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lbx').addEventListener('click', e => {
+    if(e.target === e.currentTarget) closeLbx();
+  });
+
+  // ── Esc
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') {
+      document.querySelectorAll('.modal-ov.open').forEach(m => m.classList.remove('open'));
+      closeLbx();
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+</body>
+</html>
